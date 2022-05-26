@@ -1,0 +1,85 @@
+cd \Users\Assus\VirtualBox VMs\Debian10
+certUtil -hashfile debian10.vdi sha1
+
+
+Virtual machine é um recurso onde usamos software em vez de hardware para rodar programas. Cada virtual machine tem seu próprio sistema operacional e funciona independemente das outras VMs, mesmo se estiverem rodando no mesmo host.
+
+O propósito é acomodar diferentes níveis de poder processamento, rodar softwares específicos de um OS diferente do host, ou testar apps em um ambiente isolado e seguro.
+
+A VM funciona através da tecnologia de Virtualização, que usa software para simular hardware para rodar a VM em um host.
+
+Diferença entre aptidude and apt é que o aptidude é um gerenciador de pacotes de alto nível que oferece opções mais amigáveis para o usuário enquanto o apt é de baixo nível, que permite maiores customizações embora seja mais complexo que os gerenciadores de alto nível.
+
+AppArmor é um módulo de segurança do kernel do Linux que permite o admin a restringir as capacidades de programas baseado em perfis de cada programa.
+
+SSH é conhecido como Secure Shell ou Secure Socket Shell é um protocolo de rede que dá aos usuários uma maneira segura de acessar um computador através de um rede desprotegida.
+
+LVM é o gerenciador de volume lógico, é um dos métodos de alocar espaço no disco rígido
+em volumes lógicos que são facilmente redimensionados caso necessário, ao contrário das partições.
+Volumes físicos são combinados em grupos de volume lógico com excessão do boot. O boot não pode estar no grupo por que o gestor de ínicio não pode acessá-lo.
+
+Comandos:
+
+Checar pacotes para ambiente gráfico (xorg , wayland) -> sudodpkg -l
+Checar AppArmor -> sudo aa-status
+Checar ssh -> sudo service ssh status
+Checar firewall (ufw) -> sudo ufw status
+Checar OS com versão -> cat /etc/os-release
+Checar sistema operacional -> uname -v
+
+*User:
+
+getent group sudo
+getent group user42
+cat /etc/passwd -> Checa todos os usuários
+
+**Criar novo user:
+Cria novo usuário -> sudo adduser <username>
+Checa politicas de senha do novo usuáario -> sudo chage -l <username>
+Adiciona usuário para grupo sudo -> sudo adduser <username> sudo
+Deleta usuario -> sudo userdel
+
+Adiciona usuario ao grupo ->  sudo adduser <username> user42
+Cria grupo ->  sudo groupadd <groupname>
+Adiciona usuario ao grupo -> sudo usermod -aG <groupname> <username>
+Politicas de senha -> nano /etc/login.defs
+		nano /etc/pam.d/common-password
+
+*Hostname:
+nome do host ->  hostname
+troca nome do host -> sudo nano /etc/hostname
+
+*Checar particoes e LVM -> lsblk
+
+*SUDO
+nano /etc/sudoers.d/<filename>
+Regras do sudo -> sudo visudo
+Logs do sudo -> usando o root , cd /var/log/sudo/00/00
+para ver as pastas -> ls
+		sudo apt update
+para ver se criou pastas novas -> ls
+entrar na pasta -> cd <novapasta>
+para input -> cat log
+para output -> cat ttyout
+
+*UFW
+sudo ufw status
+sudo ufw allow 8080
+sudo ufw delete allow 8080
+
+*SSH
+Conectar pelo WSL Ubuntu
+ssh fsanches@192.168.15.23 -p 4242
+Testar sem porta
+Testar entrar pelo root
+
+*CRON
+sudo crontab -l
+sudo crontab -u root -e
+''     ''    stop/start
+''     ''    disable/enable
+''     ''    restart
+''     ''    status		
+systemctl disable cron
+
+Como o script funciona?
