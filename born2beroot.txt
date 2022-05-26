@@ -1,6 +1,11 @@
+Windows
 cd \Users\Assus\VirtualBox VMs\Debian10
 certUtil -hashfile debian10.vdi sha1
 
+Linux
+sha1sum <name.vdi>
+
+Ambos os comandos demoram bastante para rodar, se quiser adiar os conceitos teóricos da avaliação, antes de começar a rodar a VM.
 
 Virtual machine é um recurso onde usamos software em vez de hardware para rodar programas. Cada virtual machine tem seu próprio sistema operacional e funciona independemente das outras VMs, mesmo se estiverem rodando no mesmo host.
 
